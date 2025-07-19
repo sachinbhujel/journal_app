@@ -15,11 +15,14 @@ function PastEntries({ entries }) {
                 entries.map((entry, index) => (
                     <div className="entry-found" key={index}>
                         <div className="entry-found-top">
-                            <h2>{entry.title}</h2>
-                            <p>{entry.date}</p>
+                          <h2>{entry.title.length > 10 ? entry.title.slice(0, 16) + "..." : entry.title}</h2>
+                            <div className="date-time-div">
+                                <p>{entry.date}</p>
+                                <p className="time" style={{fontSize: "12px", marginTop: "6px"}}>{new Date().toLocaleTimeString()}</p>
+                            </div>
                         </div>
                        <div className="entry-found-content">
-  <ReactMarkdown>{entry.content}</ReactMarkdown>
+  <ReactMarkdown>{entry.content.length > 70 ? entry.content.slice(0, 140) + "..." : entry.content}</ReactMarkdown>
 </div>
 
                         <div className="entry-found-select">
