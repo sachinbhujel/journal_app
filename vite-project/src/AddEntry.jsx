@@ -3,18 +3,26 @@ import ReactMarkdown from "react-markdown";
 import "github-markdown-css";
 import "./App.css";
 
-function AddEntry({ setAddButtonOpen, handleSave }) {
-    const [title, setTitle] = useState("");
-    const [mood, setMood] = useState("");
-    const [category, setCategory] = useState("");
-    const [content, setContent] = useState("");
+function AddEntry({ setAddButtonOpen, handleSave, entry }) {
+    const [title, setTitle] = useState(entry?.title || "");
+    const [mood, setMood] = useState(entry?.mood || "");
+    const [category, setCategory] = useState(entry?.category || "");
+    const [content, setContent] = useState(entry?.content || "");
+
     const [active, setActive] = useState("edit");
     const [previewOpen, setPreviewOpen] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!title || !mood || !category || !content) return;
-        handleSave({ title, mood, category, content });
+        handleSave({
+            title,
+            mood,
+            category,
+            content,
+            date: new Date().toLocaleDateString(),
+            time: new Date().toLocaleTimeString(),
+        });
         console.log(title);
     };
 
@@ -24,14 +32,14 @@ function AddEntry({ setAddButtonOpen, handleSave }) {
     };
 
     const handlePreview = () => {
-      setActive("preview");
-      setPreviewOpen(true);
-    }
+        setActive("preview");
+        setPreviewOpen(true);
+    };
 
     const handleEdit = () => {
-      setPreviewOpen(false);
-      setActive("edit");
-    }
+        setPreviewOpen(false);
+        setActive("edit");
+    };
 
     return (
         <div className="add-entry-container">

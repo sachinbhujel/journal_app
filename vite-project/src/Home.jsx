@@ -11,6 +11,7 @@ function Home() {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
     const [addButtonOpen, setAddButtonOpen] = useState(false);
     const [entries, setEntries] = useState([]);
+    const [editingIndex, setEditingIndex] = useState(null);
 
     useEffect(() => {
         const handleResize = () => {
@@ -47,10 +48,22 @@ function Home() {
         setAddButtonOpen(false);
     }
 
+     const handleEntryDelete = (indexToDelete) => {
+    setEntries((prevEntries) =>
+      prevEntries.filter((_, index) => index !== indexToDelete)
+    );
+  };
+
+   const handleEntryEdit = (index) => {
+    setEditingIndex(index);
+    setAddButtonOpen(true);
+  };
+
+
     return (
         <div>
             {addButtonOpen ? (
-                <AddEntry setAddButtonOpen={setAddButtonOpen} handleSave={handleSave}/>
+                <AddEntry setAddButtonOpen={setAddButtonOpen} handleSave={handleSave}  entry={entries[editingIndex]}/>
             ) : (
                 <div className="home">
                     {menuOpen && (
@@ -109,7 +122,7 @@ function Home() {
                         </div>
                         <div className="past-entries">
                             <h2>Past Entries</h2>
-                            <PastEntries entries={entries}/>
+                            <PastEntries entries={entries} handleEntryDelete={handleEntryDelete} handleEntryEdit={handleEntryEdit}/>
                         </div>
                     </div>
                 </div>

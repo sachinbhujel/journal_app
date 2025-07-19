@@ -264,15 +264,23 @@
     padding: 6px;
     font-size: 18px;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 4px;
 }
 
 .entry-edit {
     background-color: rgb(19, 160, 19);
 }
 
+.entry-edit:hover{
+    background-color: rgb(40, 105, 40);
+}
+
 .entry-delete {
     background-color: rgb(211, 42, 42);
+}
+
+.entry-delete:hover{
+    background-color: rgb(89, 45, 45);
 }
 
 .add-entry-container {
