@@ -1,9 +1,0 @@
-{
-  "devDependencies": {
-    "react-router-dom": "^7.6.3"
-  },
-  "dependencies": {
-    "github-markdown-css": "^5.8.1",
-    "react-markdown": "^10.1.0"
-  }
-}
