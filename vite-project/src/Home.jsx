@@ -36,6 +36,22 @@ function calculateStreak(entries) {
   return streak;
 }
 
+function countEntriesThisMonth(entries) {
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+
+  return entries.filter(entry => {
+    const entryDate = new Date(entry.date);
+    if (isNaN(entryDate)) return false; // invalid date
+    return (
+      entryDate.getMonth() === currentMonth &&
+      entryDate.getFullYear() === currentYear
+    );
+  }).length;
+}
+
+
 function Home() {
     const [menuOpen, setMenuOpen] = useState(true);
 
@@ -100,6 +116,8 @@ function Home() {
 };
 
 const streak = calculateStreak(entries);
+const entriesThisMonth = countEntriesThisMonth(entries);
+
 
     return (
         <div>
@@ -158,7 +176,7 @@ const streak = calculateStreak(entries);
                         </div>
                         <div className="entries-detail-div">
                             <Feature title="Total Entries" number={entries.length} />
-                            <Feature title="This Month" number="05" />
+                            <Feature title="This Month" number={entriesThisMonth} />
                             <Feature title="Streak" number={streak} />
                         </div>
                         <div className="past-entries">

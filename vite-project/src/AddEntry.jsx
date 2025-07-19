@@ -20,7 +20,7 @@ function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm  }) {
             mood,
             category,
             content,
-            date: new Date().toLocaleDateString(),
+            date: new Date().toISOString().split("T")[0],
             time: new Date().toLocaleTimeString(),
         });
 
