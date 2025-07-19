@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "github-markdown-css";
 import "./App.css";
 
-function AddEntry({ setAddButtonOpen, handleSave, entry }) {
+function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm  }) {
     const [title, setTitle] = useState(entry?.title || "");
     const [mood, setMood] = useState(entry?.mood || "");
     const [category, setCategory] = useState(entry?.category || "");
@@ -23,11 +23,16 @@ function AddEntry({ setAddButtonOpen, handleSave, entry }) {
             date: new Date().toLocaleDateString(),
             time: new Date().toLocaleTimeString(),
         });
-        console.log(title);
+
+        setTitle("");
+        setMood("");
+        setCategory("");
+        setContent("");
+        setAddButtonOpen(false);
     };
 
     const handleBack = () => {
-        console.log("back");
+        handleCloseForm()
         setAddButtonOpen(false);
     };
 
@@ -40,6 +45,13 @@ function AddEntry({ setAddButtonOpen, handleSave, entry }) {
         setPreviewOpen(false);
         setActive("edit");
     };
+
+    useEffect(() => {
+        setTitle(entry?.title || "");
+        setMood(entry?.mood || "");
+        setCategory(entry?.category || "");
+        setContent(entry?.content || "");
+    }, [entry]);
 
     return (
         <div className="add-entry-container">

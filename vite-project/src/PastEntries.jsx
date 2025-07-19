@@ -25,11 +25,11 @@ function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
                                 <p
                                     className="time"
                                     style={{
-                                        fontSize: "12px",
+                                        fontSize: "14px",
                                         marginTop: "6px",
                                     }}
                                 >
-                                    {new Date().toLocaleTimeString()}
+                                    {entry.time}
                                 </p>
                             </div>
                         </div>
@@ -46,7 +46,7 @@ function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
                             <p className="category">{entry.category}</p>
                         </div>
                         <div className="edit-delete-div">
-                            <span class="material-symbols-outlined entry-edit" onClick={() => handleEntryEdit(index)}>
+                            <span class="material-symbols-outlined entry-edit" onClick={() => handleEntryEdit(index, entry)}>
                                 edit
                             </span>
                             <span class="material-symbols-outlined entry-delete" onClick={() => handleEntryDelete(index)}>

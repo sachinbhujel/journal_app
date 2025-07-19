@@ -5,6 +5,37 @@ import Feature from "./Feature";
 import PastEntries from "./PastEntries";
 import AddEntry from "./AddEntry";
 
+function calculateStreak(entries) {
+  if (entries.length === 0) return 0;
+
+  // Convert entry dates to Date objects
+  const dates = entries.map(e => new Date(e.date));
+  // Sort descending (latest first)
+  dates.sort((a, b) => b - a);
+
+  let streak = 0;
+  let currentDate = new Date();
+  currentDate.setHours(0,0,0,0); // normalize to start of day
+
+  for (let i = 0; i < dates.length; i++) {
+    let entryDate = new Date(dates[i]);
+    entryDate.setHours(0,0,0,0); // normalize
+
+    const diffDays = (currentDate - entryDate) / (1000 * 60 * 60 * 24);
+
+    if (diffDays === 0 || diffDays === streak) {
+      // If entry matches currentDate or currentDate minus streak days
+      streak++;
+      // Move to previous day for next check
+      currentDate.setDate(currentDate.getDate() - 1);
+    } else if (diffDays > streak) {
+      // Gap found, stop counting
+      break;
+    }
+  }
+  return streak;
+}
+
 function Home() {
     const [menuOpen, setMenuOpen] = useState(true);
 
@@ -12,6 +43,7 @@ function Home() {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
     const [entries, setEntries] = useState([]);
     const [editingIndex, setEditingIndex] = useState(null);
+    const [editEntry, setEditEntry] = useState(null);
 
     useEffect(() => {
         const handleResize = () => {
@@ -38,13 +70,14 @@ function Home() {
     };
 
     const handleSave = (entryData) => {
-        const newEntry = {
-      ...entryData,
-      date: new Date().toLocaleDateString('en-US', {
-        year: 'numeric', month: 'short', day: 'numeric'
-      })
-    };
-    setEntries([newEntry, ...entries]);
+        if(editingIndex !== null){
+            const updatedEntries = [...entries];
+            updatedEntries.splice(editingIndex, 1);
+            setEntries([entryData, ...updatedEntries]);
+            setEditingIndex(null);
+        } else{
+            setEntries([entryData, ...entries])
+        }
         setAddButtonOpen(false);
     }
 
@@ -54,16 +87,24 @@ function Home() {
     );
   };
 
-   const handleEntryEdit = (index) => {
+   const handleEntryEdit = (index, entry) => {
     setEditingIndex(index);
+    setEditEntry(entry);
     setAddButtonOpen(true);
   };
 
+  const handleCloseForm = () => {
+  setAddButtonOpen(false);
+  setEditingIndex(null);
+  setEditEntry(null);
+};
+
+const streak = calculateStreak(entries);
 
     return (
         <div>
             {addButtonOpen ? (
-                <AddEntry setAddButtonOpen={setAddButtonOpen} handleSave={handleSave}  entry={entries[editingIndex]}/>
+                <AddEntry setAddButtonOpen={setAddButtonOpen} handleSave={handleSave}  entry={editEntry} handleCloseForm={handleCloseForm} />
             ) : (
                 <div className="home">
                     {menuOpen && (
@@ -118,7 +159,7 @@ function Home() {
                         <div className="entries-detail-div">
                             <Feature title="Total Entries" number={entries.length} />
                             <Feature title="This Month" number="05" />
-                            <Feature title="Streak" number="0" />
+                            <Feature title="Streak" number={streak} />
                         </div>
                         <div className="past-entries">
                             <h2>Past Entries</h2>
