@@ -6,46 +6,45 @@ import PastEntries from "./PastEntries";
 import AddEntry from "./AddEntry";
 
 function calculateStreak(entries) {
-  if (entries.length === 0) return 0;
+    if (entries.length === 0) return 0;
 
-  const dates = entries.map(e => new Date(e.date));
-  dates.sort((a, b) => b - a);
+    const dates = entries.map((e) => new Date(e.date));
+    dates.sort((a, b) => b - a);
 
-  let streak = 0;
-  let currentDate = new Date();
-  currentDate.setHours(0,0,0,0);
+    let streak = 0;
+    let currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
 
-  for (let i = 0; i < dates.length; i++) {
-    let entryDate = new Date(dates[i]);
-    entryDate.setHours(0,0,0,0); 
+    for (let i = 0; i < dates.length; i++) {
+        let entryDate = new Date(dates[i]);
+        entryDate.setHours(0, 0, 0, 0);
 
-    const diffDays = (currentDate - entryDate) / (1000 * 60 * 60 * 24);
+        const diffDays = (currentDate - entryDate) / (1000 * 60 * 60 * 24);
 
-    if (diffDays === 0 || diffDays === streak) {
-      streak++;
-      currentDate.setDate(currentDate.getDate() - 1);
-    } else if (diffDays > streak) {
-      break;
+        if (diffDays === 0 || diffDays === streak) {
+            streak++;
+            currentDate.setDate(currentDate.getDate() - 1);
+        } else if (diffDays > streak) {
+            break;
+        }
     }
-  }
-  return streak;
+    return streak;
 }
 
 function countEntriesThisMonth(entries) {
-  const now = new Date();
-  const currentMonth = now.getMonth();
-  const currentYear = now.getFullYear();
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
 
-  return entries.filter(entry => {
-    const entryDate = new Date(entry.date);
-    if (isNaN(entryDate)) return false;
-    return (
-      entryDate.getMonth() === currentMonth &&
-      entryDate.getFullYear() === currentYear
-    );
-  }).length;
+    return entries.filter((entry) => {
+        const entryDate = new Date(entry.date);
+        if (isNaN(entryDate)) return false;
+        return (
+            entryDate.getMonth() === currentMonth &&
+            entryDate.getFullYear() === currentYear
+        );
+    }).length;
 }
-
 
 function Home() {
     const [menuOpen, setMenuOpen] = useState(true);
@@ -81,43 +80,47 @@ function Home() {
     };
 
     const handleSave = (entryData) => {
-        if(editingIndex !== null){
+        if (editingIndex !== null) {
             const updatedEntries = [...entries];
             updatedEntries.splice(editingIndex, 1);
             setEntries([entryData, ...updatedEntries]);
             setEditingIndex(null);
-        } else{
-            setEntries([entryData, ...entries])
+        } else {
+            setEntries([entryData, ...entries]);
         }
         setAddButtonOpen(false);
-    }
+    };
 
-     const handleEntryDelete = (indexToDelete) => {
-    setEntries((prevEntries) =>
-      prevEntries.filter((_, index) => index !== indexToDelete)
-    );
-  };
+    const handleEntryDelete = (indexToDelete) => {
+        setEntries((prevEntries) =>
+            prevEntries.filter((_, index) => index !== indexToDelete)
+        );
+    };
 
-   const handleEntryEdit = (index, entry) => {
-    setEditingIndex(index);
-    setEditEntry(entry);
-    setAddButtonOpen(true);
-  };
+    const handleEntryEdit = (index, entry) => {
+        setEditingIndex(index);
+        setEditEntry(entry);
+        setAddButtonOpen(true);
+    };
 
-  const handleCloseForm = () => {
-  setAddButtonOpen(false);
-  setEditingIndex(null);
-  setEditEntry(null);
-};
+    const handleCloseForm = () => {
+        setAddButtonOpen(false);
+        setEditingIndex(null);
+        setEditEntry(null);
+    };
 
-const streak = calculateStreak(entries);
-const entriesThisMonth = countEntriesThisMonth(entries);
-
+    const streak = calculateStreak(entries);
+    const entriesThisMonth = countEntriesThisMonth(entries);
 
     return (
         <div>
             {addButtonOpen ? (
-                <AddEntry setAddButtonOpen={setAddButtonOpen} handleSave={handleSave}  entry={editEntry} handleCloseForm={handleCloseForm} />
+                <AddEntry
+                    setAddButtonOpen={setAddButtonOpen}
+                    handleSave={handleSave}
+                    entry={editEntry}
+                    handleCloseForm={handleCloseForm}
+                />
             ) : (
                 <div className="home">
                     {menuOpen && (
@@ -163,20 +166,33 @@ const entriesThisMonth = countEntriesThisMonth(entries);
                                 write, and grow—one entry at a time.
                             </p>
                         </div>
-                        <div className="add-entry-button" onClick={handleAddEntry}>
+                        <div
+                            className="add-entry-button"
+                            onClick={handleAddEntry}
+                        >
                             <span className="material-symbols-outlined">
                                 add
                             </span>
                             <button>Add Entry</button>
                         </div>
                         <div className="entries-detail-div">
-                            <Feature title="Total Entries" number={entries.length} />
-                            <Feature title="This Month" number={entriesThisMonth} />
+                            <Feature
+                                title="Total Entries"
+                                number={entries.length}
+                            />
+                            <Feature
+                                title="This Month"
+                                number={entriesThisMonth}
+                            />
                             <Feature title="Streak" number={streak} />
                         </div>
                         <div className="past-entries">
                             <h2>Past Entries</h2>
-                            <PastEntries entries={entries} handleEntryDelete={handleEntryDelete} handleEntryEdit={handleEntryEdit}/>
+                            <PastEntries
+                                entries={entries}
+                                handleEntryDelete={handleEntryDelete}
+                                handleEntryEdit={handleEntryEdit}
+                            />
                         </div>
                     </div>
                 </div>

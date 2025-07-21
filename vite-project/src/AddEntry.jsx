@@ -72,30 +72,35 @@ function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm  }) {
                 />
 
                 <div className="entry-select-row">
-                    <select
-                        value={mood}
-                        onChange={(e) => setMood(e.target.value)}
-                        className="entry-select"
-                    >
-                        <option value="">Select mood...</option>
-                        <option value="happy">Happy</option>
-                        <option value="sad">Sad</option>
-                        <option value="excited">Excited</option>
-                        <option value="angry">Angry</option>
-                    </select>
+  <div className="entry-select-wrapper">
+    <select
+      value={mood}
+      onChange={(e) => setMood(e.target.value)}
+      className="entry-select"
+    >
+      <option value="">Select mood...</option>
+      <option value="happy">Happy</option>
+      <option value="sad">Sad</option>
+      <option value="excited">Excited</option>
+      <option value="angry">Angry</option>
+    </select>
+  </div>
 
-                    <select
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                        className="entry-select"
-                    >
-                        <option value="">Select category...</option>
-                        <option value="personal">Personal</option>
-                        <option value="work">Work</option>
-                        <option value="travel">Travel</option>
-                        <option value="ideas">Ideas</option>
-                    </select>
-                </div>
+  <div className="entry-select-wrapper">
+    <select
+      value={category}
+      onChange={(e) => setCategory(e.target.value)}
+      className="entry-select"
+    >
+      <option value="">Select category...</option>
+      <option value="personal">Personal</option>
+      <option value="work">Work</option>
+      <option value="travel">Travel</option>
+      <option value="ideas">Ideas</option>
+    </select>
+  </div>
+</div>
+
 
                 <h3 style={{ fontSize: "16px", marginTop: "13px" }}>Content</h3>
                 <div className="edit-preview-div">
