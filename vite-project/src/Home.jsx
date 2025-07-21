@@ -8,28 +8,23 @@ import AddEntry from "./AddEntry";
 function calculateStreak(entries) {
   if (entries.length === 0) return 0;
 
-  // Convert entry dates to Date objects
   const dates = entries.map(e => new Date(e.date));
-  // Sort descending (latest first)
   dates.sort((a, b) => b - a);
 
   let streak = 0;
   let currentDate = new Date();
-  currentDate.setHours(0,0,0,0); // normalize to start of day
+  currentDate.setHours(0,0,0,0);
 
   for (let i = 0; i < dates.length; i++) {
     let entryDate = new Date(dates[i]);
-    entryDate.setHours(0,0,0,0); // normalize
+    entryDate.setHours(0,0,0,0); 
 
     const diffDays = (currentDate - entryDate) / (1000 * 60 * 60 * 24);
 
     if (diffDays === 0 || diffDays === streak) {
-      // If entry matches currentDate or currentDate minus streak days
       streak++;
-      // Move to previous day for next check
       currentDate.setDate(currentDate.getDate() - 1);
     } else if (diffDays > streak) {
-      // Gap found, stop counting
       break;
     }
   }
@@ -43,7 +38,7 @@ function countEntriesThisMonth(entries) {
 
   return entries.filter(entry => {
     const entryDate = new Date(entry.date);
-    if (isNaN(entryDate)) return false; // invalid date
+    if (isNaN(entryDate)) return false;
     return (
       entryDate.getMonth() === currentMonth &&
       entryDate.getFullYear() === currentYear
