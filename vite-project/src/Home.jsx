@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Feature from "./Feature";
 import PastEntries from "./PastEntries";
 import AddEntry from "./AddEntry";
+import Sidebar from "./Sidebar";
 
 function calculateStreak(entries) {
     if (entries.length === 0) return 0;
@@ -133,17 +134,7 @@ function Home() {
                                     close
                                 </span>
                             )}
-                            <ul>
-                                <li>
-                                    <Link to="/about">About</Link>
-                                </li>
-                                <li>
-                                    <Link to="/calendar">Calendar</Link>
-                                </li>
-                                <li>
-                                    <Link to="/Entries">Entries</Link>
-                                </li>
-                            </ul>
+                            <Sidebar />
                         </div>
                     )}
 
@@ -151,6 +142,7 @@ function Home() {
                         <div className="overlay" onClick={handleSidebar}></div>
                     )}
 
+                    <Outlet />
                     <div className="main">
                         <span
                             className="material-symbols-outlined close"
