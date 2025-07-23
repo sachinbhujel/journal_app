@@ -12,7 +12,6 @@
 
 .app {
     display: flex;
-    background-color: #1abc9c;
 }
 
 .dock-for-mobiles {
@@ -293,6 +292,7 @@
 }
 
 .add-entry-container {
+    width: 100vw;
     min-height: 100vh;
     background-color: #192838;
     color: #f1f1f1;
@@ -509,7 +509,6 @@
 
     .dock-for-mobiles {
         display: block;
-        background-color: #00ffd5;
     }
 
     .sidebar{

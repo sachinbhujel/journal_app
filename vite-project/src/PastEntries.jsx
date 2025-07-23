@@ -34,11 +34,11 @@ function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
                             </div>
                         </div>
                         <div className="entry-found-content">
-                            <ReactMarkdown>
+                         
                                 {entry.content.length > 70
                                     ? entry.content.slice(0, 140) + "..."
                                     : entry.content}
-                            </ReactMarkdown>
+                         
                         </div>
 
                         <div className="entry-found-select">
