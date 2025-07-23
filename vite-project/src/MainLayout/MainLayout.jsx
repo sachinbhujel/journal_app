@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import React, { useState, useEffect, useRef } from "react";
+import "../App.css";
 import { Outlet } from "react-router-dom";
-import Feature from "./Feature";
-import PastEntries from "./PastEntries";
-import AddEntry from "./AddEntry";
+import Feature from "../Feature";
+import PastEntries from "../PastEntries";
+import AddEntry from "../AddEntry";
 import Sidebar from "./Sidebar";
+import Entries from "../pages/Entries";
+import Footer from "./Footer";
 
 function calculateStreak(entries) {
     if (entries.length === 0) return 0;
@@ -47,34 +49,13 @@ function countEntriesThisMonth(entries) {
     }).length;
 }
 
-function Home() {
-    const [menuOpen, setMenuOpen] = useState(true);
-
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+function MainLayout() {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
     const [entries, setEntries] = useState([]);
     const [editingIndex, setEditingIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 600);
-            if (window.innerWidth >= 600) {
-                setMenuOpen(true);
-            } else {
-                setMenuOpen(false);
-            }
-        };
-
-        window.addEventListener("resize", handleResize);
-        handleResize();
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    const handleSidebar = () => {
-        setMenuOpen((prev) => !prev);
-    };
+    const [dockOpen, setDockOpen] = useState(false);
+    const dockRef = useRef(null);
 
     const handleAddEntry = () => {
         setAddButtonOpen(true);
@@ -113,8 +94,29 @@ function Home() {
     const streak = calculateStreak(entries);
     const entriesThisMonth = countEntriesThisMonth(entries);
 
+    const handleClickDock = () => {
+        setDockOpen(!dockOpen);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dockRef.current && !dockRef.current.contains(event.target)) {
+                setDockOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div>
+        <div className="app">
+            {dockOpen ? (
+                <Sidebar />
+            ) : ""}
             {addButtonOpen ? (
                 <AddEntry
                     setAddButtonOpen={setAddButtonOpen}
@@ -123,30 +125,12 @@ function Home() {
                     handleCloseForm={handleCloseForm}
                 />
             ) : (
-                <div className="home">
-                    {menuOpen && (
-                        <div className={`sidebar ${isMobile ? "visible" : ""}`}>
-                            {isMobile && (
-                                <span
-                                    className="material-symbols-outlined close-button"
-                                    onClick={handleSidebar}
-                                >
-                                    close
-                                </span>
-                            )}
-                            <Sidebar />
-                        </div>
-                    )}
+                <>
 
-                    {isMobile && menuOpen && (
-                        <div className="overlay" onClick={handleSidebar}></div>
-                    )}
-
-                    <Outlet />
                     <div className="main">
                         <span
                             className="material-symbols-outlined close"
-                            onClick={handleSidebar}
+                            onClick={handleClickDock}
                         >
                             dock_to_right
                         </span>
@@ -187,10 +171,11 @@ function Home() {
                             />
                         </div>
                     </div>
-                </div>
+                </>
             )}
+            <Outlet />
         </div>
     );
 }
 
-export default Home;
+export default MainLayout;
