@@ -241,14 +241,6 @@
     cursor: pointer;
 }
 
-.mood {
-    background: orange;
-}
-
-.category {
-    background: lightskyblue;
-}
-
 .entry-title-date h2 {
     font-size: 24px;
     margin-bottom: 8px;
@@ -502,57 +494,55 @@
     overflow-y: scroll;
 }
 
-
 /* Success CSS */
 
 .success-entry {
-  background-color: #e0f7ec;
-  position: fixed;
-  top: 89%;
-  right: 5px;
-  color: #155724;
-  border: 1px solid #b2dfdb;
-  border-radius: 3px;
-  width: 230px;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: slideFadeIn 0.5s ease-out forwards;
+    background-color: #e0f7ec;
+    position: fixed;
+    top: 89%;
+    right: 5px;
+    color: #155724;
+    border: 1px solid #b2dfdb;
+    border-radius: 3px;
+    width: 230px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", sans-serif;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideFadeIn 0.5s ease-out forwards;
 }
 
 /* Keyframes for the animation */
 @keyframes slideFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .success-entry h3 {
-  font-size: 14px;
-  margin: 0;
-  flex: 1;
+    font-size: 14px;
+    margin: 0;
+    flex: 1;
 }
 
 .success-icon {
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: right;
-  color: #2e7d32;
-  transition: transform 0.2s ease;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    color: #2e7d32;
+    transition: transform 0.2s ease;
 }
 
 .success-icon:hover {
-  transform: rotate(90deg);
+    transform: rotate(90deg);
 }
-
 
 @media (width<600px) {
     .dock-for-computers {
@@ -563,7 +553,7 @@
         display: block;
     }
 
-    .sidebar{
+    .sidebar {
         position: fixed;
         top: 0;
         left: 0;

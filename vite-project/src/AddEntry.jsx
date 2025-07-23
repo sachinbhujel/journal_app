@@ -110,7 +110,7 @@ function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm, setSuc
                         }`}
                         onClick={handleEdit}
                     >
-                        <span class="material-symbols-outlined">edit</span>
+                        <span className="material-symbols-outlined">edit</span>
                         <p>Edit</p>
                     </div>
                     <div
@@ -119,8 +119,8 @@ function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm, setSuc
                         }`}
                         onClick={handlePreview}
                     >
-                        <span class="material-symbols-outlined">
-                            <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 visibility
                             </span>
                         </span>

@@ -4,6 +4,23 @@ import "./App.css";
 import "github-markdown-css";
 
 function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
+    const moodColors = [
+        "orange",
+        "#fca311",
+        "#cae9ff",
+        "#BBDEFB",
+        "#ffcdb2",
+        "#f9f7f3",
+    ];
+    const categoryColors = [
+        "lightskyblue",
+        "#FFF9C4",
+        "#D1C4E9",
+        "#B2EBF2",
+        "#FFECB3",
+        "#DCEDC8",
+    ];
+
     return (
         <div className="entries">
             {entries.length === 0 ? (
@@ -34,22 +51,44 @@ function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
                             </div>
                         </div>
                         <div className="entry-found-content">
-                         
-                                {entry.content.length > 70
-                                    ? entry.content.slice(0, 140) + "..."
-                                    : entry.content}
-                         
+                            {entry.content.length > 70
+                                ? entry.content.slice(0, 140) + "..."
+                                : entry.content}
                         </div>
 
                         <div className="entry-found-select">
-                            <p className="mood">{entry.mood}</p>
-                            <p className="category">{entry.category}</p>
+                            <p
+                                className="mood"
+                                style={{
+                                    backgroundColor:
+                                        moodColors[index % moodColors.length],
+                                }}
+                            >
+                                {entry.mood}
+                            </p>
+                            <p
+                                className="category"
+                                style={{
+                                    backgroundColor:
+                                        categoryColors[
+                                            index % categoryColors.length
+                                        ],
+                                }}
+                            >
+                                {entry.category}
+                            </p>
                         </div>
                         <div className="edit-delete-div">
-                            <span class="material-symbols-outlined entry-edit" onClick={() => handleEntryEdit(index, entry)}>
+                            <span
+                                className="material-symbols-outlined entry-edit"
+                                onClick={() => handleEntryEdit(index, entry)}
+                            >
                                 edit
                             </span>
-                            <span class="material-symbols-outlined entry-delete" onClick={() => handleEntryDelete(index)}>
+                            <span
+                                className="material-symbols-outlined entry-delete"
+                                onClick={() => handleEntryDelete(index)}
+                            >
                                 delete
                             </span>
                         </div>
