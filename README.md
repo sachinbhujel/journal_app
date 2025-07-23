@@ -49,7 +49,7 @@ Reflectify is a simple, elegant, and peaceful journaling web app built with Reac
 
 ## Folder Structure
 
-```bash
+   ```bash
 /src
 /components
  AddEntry.jsx
