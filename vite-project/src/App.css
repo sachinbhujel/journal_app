@@ -195,6 +195,12 @@
     box-shadow: 0 0 10px rgba(40, 167, 69, 0.2);
 }
 
+.entry-found:hover {
+    background-color: #34495e;
+    transform: scale(1.003);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .entry-found-top {
     display: flex;
     justify-content: space-between;
