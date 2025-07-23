@@ -120,7 +120,7 @@ function MainLayout() {
                 setSuccessShow(false);
             }, 2000);
 
-            return () => clearTimeout(timeout); // cleanup
+            return () => clearTimeout(timeout); 
         }
     }, [successShow]);
 
