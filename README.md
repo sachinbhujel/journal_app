@@ -6,31 +6,32 @@ Reflectify is a simple, elegant, and peaceful journaling web app built with Reac
 
 ## Features
 
-- Add, edit, and delete journal entries with title, mood, category, and markdown-supported content
-- Live markdown preview while writing entries
-- View past entries with mood and category color-coded badges
-- Track your writing streak and entries count for the current month
-- Responsive design with smooth animations
-- Sidebar toggle with outside-click detection
-- Success notification with CSS animation on entry save
+-   Add, edit, and delete journal entries with title, mood, category, and markdown-supported content
+-   Live markdown preview while writing entries
+-   View past entries with mood and category color-coded badges
+-   Track your writing streak and entries count for the current month
+-   Responsive design with smooth animations
+-   Sidebar toggle with outside-click detection
+-   Success notification with CSS animation on entry save
 
 ---
 
 ## Folder Structure
 
+````bash
 /src
-  /components
-    AddEntry.jsx
-    Sidebar.jsx
-    Feature.jsx
-    PastEntries.jsx
-    SuccessEntry.jsx
-    Footer.jsx
-  /pages
-    Entries.jsx
-  App.jsx
-  MainLayout.jsx
-  index.js
+/components
+ AddEntry.jsx
+ Sidebar.jsx
+ Feature.jsx
+ PastEntries.jsx
+ SuccessEntry.jsx
+ Footer.jsx
+/pages
+ Entries.jsx
+App.jsx
+MainLayout.jsx
+index.js
 
 ---
 
@@ -49,16 +50,17 @@ Reflectify is a simple, elegant, and peaceful journaling web app built with Reac
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/yourusername/reflectify.git
-   cd reflectify
+```bash
+git clone https://github.com/yourusername/reflectify.git
+cd reflectify
 
 2. Install dependencies:
-   
-   ```bash
-   npm install
+
+```bash
+npm install
 
 3. Start the development server:
-   
-   ```bash
-   npm start
+
+```bash
+npm start
+````
