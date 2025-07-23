@@ -10,9 +10,13 @@
     display: none;
 }*/
 
-.app{
+.app {
     display: flex;
     background-color: #1abc9c;
+}
+
+.dock-for-mobiles {
+    display: none;
 }
 
 .sidebar {
@@ -414,37 +418,36 @@
 }
 
 .entry-select-row {
-  display: flex;
-  gap: 1rem;
+    display: flex;
+    gap: 1rem;
 }
 
 .entry-select-wrapper {
-  position: relative;
-  width: fit-content;
+    position: relative;
+    width: fit-content;
 }
 
 .entry-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding: 10px 40px 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px 40px 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: white;
 }
 
 /* Custom arrow */
 .entry-select-wrapper::after {
-  content: "▼";
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: white;
-  font-size: 12px;
+    content: "▼";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+    font-size: 12px;
 }
-
 
 .entry-textarea {
     resize: vertical;
@@ -497,6 +500,23 @@
     transition: border-color 0.2s, background-color 0.2s;
     height: 250px;
     overflow-y: scroll;
+}
+
+@media (width<600px) {
+    .dock-for-computers {
+        display: none;
+    }
+
+    .dock-for-mobiles {
+        display: block;
+        background-color: #00ffd5;
+    }
+
+    .sidebar{
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
 }
 
 @media (width<500px) {

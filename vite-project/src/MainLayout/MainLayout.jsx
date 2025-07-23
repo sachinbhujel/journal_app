@@ -114,9 +114,9 @@ function MainLayout() {
 
     return (
         <div className="app">
-            {dockOpen ? (
-                <Sidebar />
-            ) : ""}
+            <div className="dock-for-computers">
+                {dockOpen ? <Sidebar /> : ""}
+            </div>
             {addButtonOpen ? (
                 <AddEntry
                     setAddButtonOpen={setAddButtonOpen}
@@ -125,9 +125,17 @@ function MainLayout() {
                     handleCloseForm={handleCloseForm}
                 />
             ) : (
-                <>
-
+                <>    
                     <div className="main">
+                        <div className="dock-for-mobiles">
+                        {dockOpen ? (
+                            <div ref={dockRef}>
+                                <Sidebar />
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                    </div>
                         <span
                             className="material-symbols-outlined close"
                             onClick={handleClickDock}
