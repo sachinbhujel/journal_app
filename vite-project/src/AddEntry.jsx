@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import "github-markdown-css";
 import "./App.css";
 
-function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm }) {
+function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm, setSuccessShow }) {
     const [title, setTitle] = useState(entry?.title || "");
     const [mood, setMood] = useState(entry?.mood || "");
     const [category, setCategory] = useState(entry?.category || "");
@@ -29,6 +29,7 @@ function AddEntry({ setAddButtonOpen, handleSave, entry, handleCloseForm }) {
         setCategory("");
         setContent("");
         setAddButtonOpen(false);
+        setSuccessShow(true);
     };
 
     const handleBack = () => {

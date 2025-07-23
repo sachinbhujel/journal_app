@@ -5,6 +5,7 @@ import Feature from "../Feature";
 import PastEntries from "../PastEntries";
 import AddEntry from "../AddEntry";
 import Sidebar from "./Sidebar";
+import SuccessEntry from "./SuccessEntry";
 import Entries from "../pages/Entries";
 import Footer from "./Footer";
 
@@ -55,6 +56,7 @@ function MainLayout() {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
     const [dockOpen, setDockOpen] = useState(false);
+    const [successShow, setSuccessShow] = useState(false);
     const dockRef = useRef(null);
 
     const handleAddEntry = () => {
@@ -104,13 +106,23 @@ function MainLayout() {
                 setDockOpen(false);
             }
         };
-
         document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+    
+
+    useEffect(() => {
+        if (successShow) {
+            const timeout = setTimeout(() => {
+                setSuccessShow(false);
+            }, 2000);
+
+            return () => clearTimeout(timeout); // cleanup
+        }
+    }, [successShow]);
 
     return (
         <div className="app">
@@ -123,19 +135,20 @@ function MainLayout() {
                     handleSave={handleSave}
                     entry={editEntry}
                     handleCloseForm={handleCloseForm}
+                    setSuccessShow={setSuccessShow}
                 />
             ) : (
-                <>    
+                <>
                     <div className="main">
                         <div className="dock-for-mobiles">
-                        {dockOpen ? (
-                            <div ref={dockRef}>
-                                <Sidebar />
-                            </div>
-                        ) : (
-                            ""
-                        )}
-                    </div>
+                            {dockOpen ? (
+                                <div ref={dockRef}>
+                                    <Sidebar />
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                        </div>
                         <span
                             className="material-symbols-outlined close"
                             onClick={handleClickDock}
@@ -178,6 +191,11 @@ function MainLayout() {
                                 handleEntryEdit={handleEntryEdit}
                             />
                         </div>
+                        {successShow ? (
+                            <SuccessEntry setSuccessShow={setSuccessShow} />
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </>
             )}
