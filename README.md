@@ -16,25 +16,6 @@ Reflectify is a simple, elegant, and peaceful journaling web app built with Reac
 
 ---
 
-## Folder Structure
-
-````bash
-/src
-/components
- AddEntry.jsx
- Sidebar.jsx
- Feature.jsx
- PastEntries.jsx
- SuccessEntry.jsx
- Footer.jsx
-/pages
- Entries.jsx
-App.jsx
-MainLayout.jsx
-index.js
-
----
-
 ## Tech Stack
 
 - React (functional components, hooks)
