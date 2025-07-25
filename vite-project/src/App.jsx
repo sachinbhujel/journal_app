@@ -3,7 +3,7 @@ import "./App.css";
 import MainLayout from "./MainLayout/MainLayout";
 import About from "./pages/About";
 import Calendar from "./pages/Calendar";
-import Entries from  "./pages/Entries"
+import Entries from "./pages/Entries";
 import No_page from "./pages/No_page";
 
 function App() {
