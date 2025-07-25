@@ -559,7 +559,7 @@
 /* About Css */
 
 .about-container {
-    padding: 40px 10px;
+    padding: 40px 20px;
     max-width: 900px;
     margin: auto;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -601,9 +601,13 @@
 
 /* Calendar Css */
 
+.calendar-wrapper{
+    padding: 20px;
+}
+
 .calendar-title {
     margin-bottom: 10px;
-    margin-top: 40px;
+    margin-top: 50px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     text-align: center;
@@ -639,16 +643,21 @@
 }
 
 .day-names {
+    margin-top: 15px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     font-weight: bold;
 }
 
+.day-name{
+    font-size: 15px;
+}
+
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 0.5rem;
+    gap: 0px;
+    margin-top: 0.8rem;
 }
 
 .arrow-icons {
@@ -661,13 +670,12 @@
 }
 
 .arrow-icons:hover {
-    background-color: #0e0f0f;
+    background-color: #2c3e50;
     color: white;
 }
 
 .day {
     padding: 10px;
-    border-radius: 6px;
     background: #f4f4f4;
 }
 
@@ -680,6 +688,17 @@
 .day.empty {
     visibility: hidden;
 }
+
+@media screen and (max-width: 600px) {
+    .day-name,
+    .day {
+        font-size: 12px;
+    }
+    .calendar-wrapper {
+        padding: 10px;
+    }
+}
+
 
 @media (width<600px) {
     .dock-for-computers {
