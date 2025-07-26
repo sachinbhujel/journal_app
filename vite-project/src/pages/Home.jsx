@@ -110,6 +110,15 @@ export default function Home() {
         }
     }, [successShow]);
 
+    // Load Entries
+    const LOAD_COUNT = 3;
+    const [visibleCount, setVisibleCount] = useState(LOAD_COUNT);
+    const visibleEntries = entries.slice(0, visibleCount);
+
+    const handleLoadMore = () => {
+        setVisibleCount((prev) => Math.min(prev + LOAD_COUNT, entries.length));
+    };
+
     return (
         <>
             {addButtonOpen ? (
@@ -144,14 +153,23 @@ export default function Home() {
                     </div>
                     <div className="past-entries">
                         <h2>Past Entries</h2>
+
                         <PastEntries
-                            entries={entries}
+                            entries={visibleEntries}
                             handleEntryDelete={handleEntryDelete}
                             handleEntryEdit={handleEntryEdit}
                         />
                     </div>
                     {successShow && (
                         <SuccessEntry setSuccessShow={setSuccessShow} />
+                    )}
+                    {visibleCount < entries.length && (
+                        <button
+                            onClick={handleLoadMore}
+                            className="load_more"
+                        >
+                            Load More
+                        </button>
                     )}
                 </>
             )}
