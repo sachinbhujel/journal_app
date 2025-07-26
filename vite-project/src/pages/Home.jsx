@@ -47,10 +47,23 @@ function countEntriesThisMonth(entries) {
 
 export default function Home() {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
-    const [entries, setEntries] = useState([]);
+    const [entries, setEntries] = useState(() => {
+        try {
+            const saved = localStorage.getItem("journalEntries");
+            return saved ? JSON.parse(saved) : [];
+        } catch {
+            return [];
+        }
+    });
+
     const [editingIndex, setEditingIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
     const [successShow, setSuccessShow] = useState(false);
+
+    // Save entries to localStorage whenever entries state changes
+    useEffect(() => {
+        localStorage.setItem("journalEntries", JSON.stringify(entries));
+    }, [entries]);
 
     const handleAddEntry = () => setAddButtonOpen(true);
 
@@ -113,8 +126,8 @@ export default function Home() {
                         <h1>Reflectify – Your Personal Journal</h1>
                         <p>
                             A simple and peaceful space to capture your
-                            thoughts, dreams, and daily moments. Reflect,
-                            write, and grow—one entry at a time.
+                            thoughts, dreams, and daily moments. Reflect, write,
+                            and grow—one entry at a time.
                         </p>
                     </div>
                     <div className="add-entry-button" onClick={handleAddEntry}>
@@ -122,11 +135,11 @@ export default function Home() {
                         <button>Add Entry</button>
                     </div>
                     <div className="entries-detail-div">
-                        <Feature title="Total Entries" number={entries.length} />
                         <Feature
-                            title="This Month"
-                            number={entriesThisMonth}
+                            title="Total Entries"
+                            number={entries.length}
                         />
+                        <Feature title="This Month" number={entriesThisMonth} />
                         <Feature title="Streak" number={streak} />
                     </div>
                     <div className="past-entries">

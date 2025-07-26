@@ -3,7 +3,12 @@ import ReactMarkdown from "react-markdown";
 import "./App.css";
 import "github-markdown-css";
 
-function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
+function PastEntries({
+    entries,
+    handleEntryDelete,
+    handleEntryEdit,
+    showButtons = true,
+}) {
     const moodColors = [
         "orange",
         "#fca311",
@@ -78,20 +83,24 @@ function PastEntries({ entries, handleEntryDelete, handleEntryEdit }) {
                                 {entry.category}
                             </p>
                         </div>
-                        <div className="edit-delete-div">
-                            <span
-                                className="material-symbols-outlined entry-edit"
-                                onClick={() => handleEntryEdit(index, entry)}
-                            >
-                                edit
-                            </span>
-                            <span
-                                className="material-symbols-outlined entry-delete"
-                                onClick={() => handleEntryDelete(index)}
-                            >
-                                delete
-                            </span>
-                        </div>
+                        {showButtons && (
+                            <div className="edit-delete-div">
+                                <span
+                                    className="material-symbols-outlined entry-edit"
+                                    onClick={() =>
+                                        handleEntryEdit(index, entry)
+                                    }
+                                >
+                                    edit
+                                </span>
+                                <span
+                                    className="material-symbols-outlined entry-delete"
+                                    onClick={() => handleEntryDelete(index)}
+                                >
+                                    delete
+                                </span>
+                            </div>
+                        )}
                     </div>
                 ))
             )}
