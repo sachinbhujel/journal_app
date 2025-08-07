@@ -811,6 +811,19 @@
     letter-spacing: 1.04px;
 }
 
+
+/* NO Page Error */
+
+.no-page-wrapper{
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.no-page-title{
+    text-align: center;
+
+}
+
 @media screen and (max-width: 600px) {
     .day-name,
     .day {

@@ -5,13 +5,16 @@ function Sidebar() {
         <div className="sidebar">
             <ul>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
                     <Link to="/calendar">Calendar</Link>
                 </li>
                 <li>
                     <Link to="/Entries">Entries</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
                 </li>
             </ul>
         </div>
