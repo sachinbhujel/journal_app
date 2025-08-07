@@ -1,35 +1,38 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Calendar from 'react-calendar';
-import '../App.css'; // custom styles
+import Calendar from "react-calendar";
+import "../App.css";
 
-export default function MyCalendar() {
-  const [value, onChange] = useState(new Date());
+export default function MyCalendar({onDateClick}) {
+    const isToday = (date) => {
+        const today = new Date();
+        return (
+            date.getDate() === today.getDate() &&
+            date.getMonth() === today.getMonth() &&
+            date.getFullYear() === today.getFullYear()
+        );
+    };
 
-  // Check if given date is today
-  const isToday = (date) => {
-    const today = new Date();
+    function callDay(clickDay) {
+        const year = clickDay.getFullYear();
+        const month = String(clickDay.getMonth() + 1).padStart(2, "0");
+        const day = String(clickDay.getDate()).padStart(2, "0");
+        const selectedDate = `${year}-${month}-${day}`;
+        onDateClick(selectedDate)
+    }
+
     return (
-      date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getFullYear() === today.getFullYear()
+        <div className="custom-calendar-container">
+            <Calendar
+                className="custom-calendar"
+                onClickDay={callDay}
+                tileClassName={({ date, view }) => {
+                    if (view === "month" && isToday(date)) {
+                        return "custom-today";
+                    }
+                    return "";
+                }}
+            />
+        </div>
     );
-  };
-
-  return (
-    <div className="custom-calendar-container">
-      <Calendar
-        onChange={onChange}
-        value={value}
-        className="custom-calendar"
-        tileClassName={({ date, view }) => {
-          if (view === 'month' && isToday(date)) {
-            return 'custom-today';
-          }
-          return '';
-        }}
-      />
-    </div>
-  );
 }

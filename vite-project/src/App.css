@@ -811,17 +811,55 @@
     letter-spacing: 1.04px;
 }
 
-
 /* NO Page Error */
 
-.no-page-wrapper{
+.no-page-wrapper {
     margin-top: 100px;
     padding: 10px;
 }
 
-.no-page-title{
+.no-page-title {
     text-align: center;
+}
 
+.selected-date-entry-div {
+    display: flex;
+    gap: 25px;
+    justify-content: space-between;
+}
+
+.calendar-selected-date-entry-div {
+    width: 50%;
+}
+
+.entries-selected-date-entry-div {
+    width: 50%;
+}
+
+.calendar-entry-not-found {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.calendar-entry-not-found h2 {
+    text-align: center;
+    color: #535252;
+    margin-bottom: 10px;
+}
+
+.calendar-entry-not-found p {
+    text-align: center;
+    color: #6c757d;
+}
+
+.entry-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 @media screen and (max-width: 600px) {
@@ -831,6 +869,23 @@
     }
     .calendar-wrapper {
         padding: 10px;
+    }
+}
+
+@media (width<800px) {
+    .selected-date-entry-div {
+        flex-direction: column;
+    }
+
+    .calendar-entry-not-found{
+        width: 100%;
+    }
+    .calendar-selected-date-entry-div {
+        width: 100%;
+    }
+
+    .entries-selected-date-entry-div {
+        width: 100%;
     }
 }
 

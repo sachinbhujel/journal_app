@@ -59,8 +59,7 @@ export default function Home() {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
     const [successShow, setSuccessShow] = useState(false);
-
-    // Save entries to localStorage whenever entries state changes
+    
     useEffect(() => {
         localStorage.setItem("journalEntries", JSON.stringify(entries));
     }, [entries]);
@@ -110,7 +109,6 @@ export default function Home() {
         }
     }, [successShow]);
 
-    // Load Entries
     const LOAD_COUNT = 3;
     const [visibleCount, setVisibleCount] = useState(LOAD_COUNT);
     const visibleEntries = entries.slice(0, visibleCount);
