@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import "../App.css";
-import Home from "../pages/Home";
+import Home from "./Home";
 
 function MainLayout() {
     const [dockOpen, setDockOpen] = useState(false);
@@ -13,7 +13,7 @@ function MainLayout() {
 
     const handleClickDock = () => {
         setDockOpen(!dockOpen);
-        setDesktopDockOpen(!desktopDockOpen)
+        setDesktopDockOpen(!desktopDockOpen);
     };
 
     useEffect(() => {

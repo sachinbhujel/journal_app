@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import MyCalendar from "../pages/My_calendar.jsx";
+import MyCalendar from "./My_calendar.jsx";
 
 export default function Calendar() {
     const [dateEntryShow, setDateEntryShow] = useState([]);
@@ -85,7 +85,7 @@ export default function Calendar() {
                                               "..."
                                             : entry.content}
                                     </div>
-                                    <div className="entry-found-select">
+                                    <div className="entry-found-select" style={{marginTop: "20px"}}>
                                         <p
                                             className="mood"
                                             style={{

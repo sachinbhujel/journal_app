@@ -1,6 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import "./App.css";
+import "../App.css";
 import "github-markdown-css";
 
 function PastEntries({
@@ -61,46 +61,50 @@ function PastEntries({
                                 : entry.content}
                         </div>
 
-                        <div className="entry-found-select">
-                            <p
-                                className="mood"
-                                style={{
-                                    backgroundColor:
-                                        moodColors[index % moodColors.length],
-                                }}
-                            >
-                                {entry.mood}
-                            </p>
-                            <p
-                                className="category"
-                                style={{
-                                    backgroundColor:
-                                        categoryColors[
-                                            index % categoryColors.length
-                                        ],
-                                }}
-                            >
-                                {entry.category}
-                            </p>
-                        </div>
-                        {showButtons && (
-                            <div className="edit-delete-div">
-                                <span
-                                    className="material-symbols-outlined entry-edit"
-                                    onClick={() =>
-                                        handleEntryEdit(index, entry)
-                                    }
+                        <div className="entry-actions">
+                            <div className="entry-found-select">
+                                <p
+                                    className="mood"
+                                    style={{
+                                        backgroundColor:
+                                            moodColors[
+                                                index % moodColors.length
+                                            ],
+                                    }}
                                 >
-                                    edit
-                                </span>
-                                <span
-                                    className="material-symbols-outlined entry-delete"
-                                    onClick={() => handleEntryDelete(index)}
+                                    {entry.mood}
+                                </p>
+                                <p
+                                    className="category"
+                                    style={{
+                                        backgroundColor:
+                                            categoryColors[
+                                                index % categoryColors.length
+                                            ],
+                                    }}
                                 >
-                                    delete
-                                </span>
+                                    {entry.category}
+                                </p>
                             </div>
-                        )}
+                            {showButtons && (
+                                <div className="edit-delete-div">
+                                    <span
+                                        className="material-symbols-outlined entry-edit"
+                                        onClick={() =>
+                                            handleEntryEdit(index, entry)
+                                        }
+                                    >
+                                        edit
+                                    </span>
+                                    <span
+                                        className="material-symbols-outlined entry-delete"
+                                        onClick={() => handleEntryDelete(index)}
+                                    >
+                                        delete
+                                    </span>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 ))
             )}

@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import MainLayout from "./MainLayout/MainLayout";
-import About from "./pages/About";
-import Calendar from "./pages/Calendar";
-import Entries from "./pages/Entries";
-import No_page from "./pages/No_page";
+import MainLayout from "./components/MainLayout";
+import About from "./components/About";
+import Calendar from "./components/Calendar";
+import Entries from "./components/Entries";
+import No_page from "./components/No_page";
 
 function App() {
     return (

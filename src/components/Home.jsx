@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import AddEntry from "../AddEntry";
-import Feature from "../Feature";
-import PastEntries from "../PastEntries";
-import SuccessEntry from "../MainLayout/SuccessEntry";
+import AddEntry from "./AddEntry";
+import Feature from "./Feature";
+import PastEntries from "./PastEntries";
+import SuccessEntry from "./SuccessEntry";
 
 function calculateStreak(entries) {
     if (entries.length === 0) return 0;
@@ -59,7 +59,7 @@ export default function Home() {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
     const [successShow, setSuccessShow] = useState(false);
-    
+
     useEffect(() => {
         localStorage.setItem("journalEntries", JSON.stringify(entries));
     }, [entries]);
@@ -162,10 +162,7 @@ export default function Home() {
                         <SuccessEntry setSuccessShow={setSuccessShow} />
                     )}
                     {visibleCount < entries.length && (
-                        <button
-                            onClick={handleLoadMore}
-                            className="load_more"
-                        >
+                        <button onClick={handleLoadMore} className="load_more">
                             Load More
                         </button>
                     )}

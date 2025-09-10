@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PastEntries from "../PastEntries";
+import PastEntries from "./PastEntries";
 
 function Entries() {
     const [entries, setEntries] = useState([]);
