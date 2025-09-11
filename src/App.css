@@ -144,8 +144,7 @@
 }
 
 .load_more:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px #1f2d3b;
+    transform: scale(1.02);
 }
 
 .add-entry-button .material-symbols-outlined {
@@ -231,6 +230,7 @@
 }
 
 .entry-found {
+    cursor: pointer;
     width: 100%;
     background-color: #2c3e50;
     padding: 20px;
@@ -275,7 +275,7 @@
     display: none;
 }
 
-.entry-actions{
+.entry-actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -848,10 +848,11 @@
 }
 
 .calendar-entry-not-found {
-    margin-top: 28px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 20px;
     border-radius: 8px;
 }

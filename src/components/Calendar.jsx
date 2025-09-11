@@ -85,7 +85,10 @@ export default function Calendar() {
                                               "..."
                                             : entry.content}
                                     </div>
-                                    <div className="entry-found-select" style={{marginTop: "20px"}}>
+                                    <div
+                                        className="entry-found-select"
+                                        style={{ marginTop: "20px" }}
+                                    >
                                         <p
                                             className="mood"
                                             style={{
