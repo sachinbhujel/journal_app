@@ -5,17 +5,33 @@ function Sidebar() {
         <div className="sidebar">
             <ul>
                 <NavLink to="/">
-                    <li>Home</li>
+                    <div className="sidebar-icons-div">
+                        <span class="material-symbols-outlined">home</span>
+                        <li>Home</li>
+                    </div>
                 </NavLink>
                 <NavLink to="/calendar">
-                    <li>Calendar</li>
+                    <div className="sidebar-icons-div">
+                        <span class="material-symbols-outlined">
+                            calendar_add_on
+                        </span>
+                        <li>Calendar</li>
+                    </div>
                 </NavLink>
 
                 <NavLink to="/Entries">
-                    <li>Entries</li>
+                    <div className="sidebar-icons-div">
+                        <span class="material-symbols-outlined">
+                            event_list
+                        </span>
+                        <li>Entries</li>
+                    </div>
                 </NavLink>
                 <NavLink to="/about">
-                    <li>About</li>
+                    <div className="sidebar-icons-div">
+                        <span class="material-symbols-outlined">info</span>
+                        <li>About</li>
+                    </div>
                 </NavLink>
             </ul>
         </div>
