@@ -381,6 +381,7 @@
     margin: auto;
     background-color: #192838;
     color: #f1f1f1;
+    border-radius: 6px;
     box-shadow: 0 4px 25px rgba(151, 158, 233, 0.3);
 }
 
@@ -541,7 +542,7 @@
 }
 
 .entry-textarea {
-    resize: vertical;
+    resize: none;
     min-height: 130px;
 }
 
@@ -589,8 +590,8 @@
     border-radius: 10px;
     font-size: 15px;
     transition: border-color 0.2s, background-color 0.2s;
-    height: 250px;
-    overflow-y: scroll;
+    height: 130px;
+    overflow-y: auto;
 }
 
 /* Success CSS */
@@ -659,6 +660,7 @@
 .about-container .description {
     text-align: center;
     color: #2c3e50;
+    letter-spacing: 1.04px;
 }
 
 .section {
@@ -689,21 +691,21 @@
 /* Calendar Css */
 
 .calendar-wrapper {
-    padding: 20px;
+    padding-top: 20px;
+    margin-top: 30px;
 }
 
 .calendar-title {
     margin-bottom: 10px;
-    margin-top: 50px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
     text-align: center;
+    font-size: 36px;
 }
 
 .calendar-description {
     text-align: center;
     margin-bottom: 40px;
     letter-spacing: 1.04px;
+    color: #2c3e50;
 }
 
 .calendar {
@@ -816,6 +818,10 @@
     user-select: none;
 }
 
+.react-calendar__tile {
+    padding: 18px 4px !important;
+}
+
 .react-calendar__navigation {
     display: flex;
     justify-content: center;
@@ -849,7 +855,6 @@
 .entries-data-title {
     margin-bottom: 10px;
     margin-top: 50px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     text-align: center;
 }
@@ -878,16 +883,17 @@
 
 .selected-date-entry-div {
     display: flex;
-    gap: 25px;
     justify-content: space-between;
 }
 
 .calendar-selected-date-entry-div {
-    width: 50%;
+    width: 40%;
+    padding-left: 30px;
 }
 
 .entries-selected-date-entry-div {
-    width: 50%;
+    padding: 0 20px;
+    width: 60%;
 }
 
 .calendar-entry-not-found {
@@ -914,7 +920,7 @@
 .entry-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 }
 
 @media screen and (max-width: 600px) {
@@ -937,10 +943,14 @@
     }
     .calendar-selected-date-entry-div {
         width: 100%;
+        padding-left: 0px;
     }
 
     .entries-selected-date-entry-div {
         width: 100%;
+    }
+    .react-calendar__tile {
+        padding: 12px !important;
     }
 }
 

@@ -61,7 +61,14 @@ function AddEntry({
     }, [entry]);
 
     return (
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center", height: "100vh",}}>
+        <div
+            style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100vh",
+            }}
+        >
             <div className="add-entry-container">
                 <div className="add-entry-header">
                     <h2>New Entry</h2>

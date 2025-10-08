@@ -57,65 +57,76 @@ export default function Calendar() {
                     {filteredEntries.length > 0 ? (
                         <div className="entry-list">
                             <h2>Entries on {selectedDate}</h2>
-                            {filteredEntries.map((entry, index) => (
-                                <div key={index} className="entry-found">
-                                    <div className="entry-found-top">
-                                        <h2>
-                                            {entry.title.length > 10
-                                                ? entry.title.slice(0, 16) +
-                                                  "..."
-                                                : entry.title}
-                                        </h2>
-                                        <div className="date-time-div">
-                                            <p>{entry.date}</p>
-                                            <p
-                                                className="time"
-                                                style={{
-                                                    fontSize: "14px",
-                                                    marginTop: "6px",
-                                                }}
-                                            >
-                                                {entry.time}
-                                            </p>
+                            <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
+                                {filteredEntries.map((entry, index) => (
+                                    <div
+                                        key={index}
+                                        className="entries-container"
+                                    >
+                                        <div className="entry-found">
+                                            <div className="entry-found-top">
+                                                <h2>
+                                                    {entry.title.length > 10
+                                                        ? entry.title.slice(
+                                                              0,
+                                                              16
+                                                          ) + "..."
+                                                        : entry.title}
+                                                </h2>
+                                                <div className="date-time-div">
+                                                    <p className="time">
+                                                        {entry.time
+                                                            .split(":")
+                                                            .slice(0, 2)
+                                                            .join(":") +
+                                                            " " +
+                                                            entry.time
+                                                                .split(":")[2]
+                                                                .split(" ")[1]}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="entry-found-content">
+                                                {entry.content.length > 70
+                                                    ? entry.content.slice(
+                                                          0,
+                                                          150
+                                                      ) + "..."
+                                                    : entry.content}
+                                            </div>
+
+                                            <div className="entry-actions">
+                                                <div className="entry-found-select">
+                                                    <p
+                                                        className="mood"
+                                                        style={{
+                                                            backgroundColor:
+                                                                moodColors[
+                                                                    index %
+                                                                        moodColors.length
+                                                                ],
+                                                        }}
+                                                    >
+                                                        {entry.mood}
+                                                    </p>
+                                                    <p
+                                                        className="category"
+                                                        style={{
+                                                            backgroundColor:
+                                                                categoryColors[
+                                                                    index %
+                                                                        categoryColors.length
+                                                                ],
+                                                        }}
+                                                    >
+                                                        {entry.category}
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="entry-found-content">
-                                        {entry.content.length > 70
-                                            ? entry.content.slice(0, 140) +
-                                              "..."
-                                            : entry.content}
-                                    </div>
-                                    <div
-                                        className="entry-found-select"
-                                        style={{ marginTop: "20px" }}
-                                    >
-                                        <p
-                                            className="mood"
-                                            style={{
-                                                backgroundColor:
-                                                    moodColors[
-                                                        index %
-                                                            moodColors.length
-                                                    ],
-                                            }}
-                                        >
-                                            {entry.mood}
-                                        </p>
-                                        <p
-                                            className="category"
-                                            style={{
-                                                backgroundColor:
-                                                    categoryColors[
-                                                        index %
-                                                            categoryColors.length
-                                                    ],
-                                            }}
-                                        >
-                                            {entry.category}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     ) : (
                         <div className="calendar-entry-not-found">
