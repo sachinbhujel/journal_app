@@ -376,27 +376,26 @@
 }
 
 .add-entry-container {
-    width: 100%;
-    min-height: 100vh;
+    width: 90%;
+    height: max-content;
     z-index: 1000;
+    padding: 20px;
+    margin: auto;
     background-color: #192838;
     color: #f1f1f1;
-    padding: 32px 28px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-    font-family: "Segoe UI", sans-serif;
-}
+    box-shadow: 0 4px 25px rgba(151, 158, 233, 0.3)
+    }
 
 .add-entry-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
-    margin-top: 26px;
 }
 
 .add-entry-header h2 {
     margin: 0;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;
 }
 
@@ -425,7 +424,7 @@
 .add-entry-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .entry-input,
@@ -434,9 +433,9 @@
     background-color: #24384d;
     color: #e0e0e0;
     border: 1px solid #375672;
-    padding: 12px 14px;
-    border-radius: 10px;
-    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 16px;
     transition: border-color 0.2s, background-color 0.2s;
 }
 
@@ -460,9 +459,15 @@
     flex-wrap: wrap;
 }
 
+.content-div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .edit-preview-div {
     display: flex;
-    gap: 20px;
+    gap: 8px;
     align-items: center;
 }
 
@@ -471,9 +476,9 @@
     align-items: center;
     gap: 8px;
     background-color: #45698e;
-    padding: 5px 10px;
+    padding: 6px 8px;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -499,13 +504,13 @@
 .edit-div.active,
 .preview-div.active {
     background-color: #24384d;
-    border: 2px solid #00ffd5;
+    border: 1px solid #00ffd5;
     font-weight: bold;
 }
 
 .entry-select-row {
     display: flex;
-    gap: 1rem;
+    gap: 6px;
 }
 
 .entry-select-wrapper {
@@ -517,22 +522,24 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    padding: 10px 40px 10px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     color: white;
+    font-size: 14px;
+    width: 150px;
+    padding: 6px 8px !important;
 }
 
 /* Custom arrow */
 .entry-select-wrapper::after {
     content: "▼";
     position: absolute;
-    right: 12px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     color: white;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .entry-textarea {
