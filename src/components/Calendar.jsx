@@ -57,7 +57,7 @@ export default function Calendar() {
                     {filteredEntries.length > 0 ? (
                         <div className="entry-list">
                             <h2>Entries on {selectedDate}</h2>
-                            <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
+                            <div className="all-entry-list" style={{display: "flex", flexDirection: "column", gap: "10px", overflowY: "auto", height: "330px"}}>
                                 {filteredEntries.map((entry, index) => (
                                     <div
                                         key={index}

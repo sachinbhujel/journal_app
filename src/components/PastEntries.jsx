@@ -8,6 +8,9 @@ function PastEntries({
     handleEntryDelete,
     handleEntryEdit,
     showButtons = true,
+    setContentBox,
+    setTitle,
+    setContent,
 }) {
     const moodColors = [
         "orange",
@@ -26,6 +29,12 @@ function PastEntries({
         "#DCEDC8",
     ];
 
+    const handleContent = (title, content) => {
+        setContentBox(true);
+        setTitle(title);
+        setContent(content);
+    };
+
     return (
         <div className="entries">
             {entries.length === 0 ? (
@@ -37,18 +46,37 @@ function PastEntries({
                 entries.map((entry, index) => (
                     <div key={index} className="entries-container">
                         <div className="entry-found">
-                            <div className="entry-found-top">
+                            <div
+                                className="entry-found-top"
+                                onClick={() =>
+                                    handleContent(entry.title, entry.content)
+                                }
+                            >
                                 <h2>
                                     {entry.title.length > 10
                                         ? entry.title.slice(0, 16) + "..."
                                         : entry.title}
                                 </h2>
                                 <div className="date-time-div">
-                                    <p className="time">{entry.time.split(":").slice(0, 2).join(":") + " " + entry.time.split(":")[2].split(" ")[1]}</p>
+                                    <p className="time">
+                                        {entry.time
+                                            .split(":")
+                                            .slice(0, 2)
+                                            .join(":") +
+                                            " " +
+                                            entry.time
+                                                .split(":")[2]
+                                                .split(" ")[1]}
+                                    </p>
                                     <p>{entry.date}</p>
                                 </div>
                             </div>
-                            <div className="entry-found-content">
+                            <div
+                                className="entry-found-content"
+                                onClick={() =>
+                                    handleContent(entry.title, entry.content)
+                                }
+                            >
                                 {entry.content.length > 70
                                     ? entry.content.slice(0, 150) + "..."
                                     : entry.content}

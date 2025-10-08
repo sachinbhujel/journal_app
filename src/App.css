@@ -266,7 +266,7 @@
 
 .entries-container:hover {
     background-color: #34495e;
-    transform: scale(1.003);
+    transform: scale(1.001);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -376,7 +376,7 @@
 .add-entry-container {
     width: 90%;
     height: max-content;
-    z-index: 1000;
+    z-index: 100;
     padding: 20px;
     margin: auto;
     background-color: #192838;
@@ -464,6 +464,16 @@
     gap: 8px;
 }
 
+.content-div::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+}
+
+.content-div::-webkit-scrollbar-thumb {
+    background-color: #34495e;
+    border-radius: 10px;
+}
+
 .edit-preview-div {
     display: flex;
     gap: 8px;
@@ -546,6 +556,16 @@
     min-height: 130px;
 }
 
+.entry-textarea::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+}
+
+.entry-textarea::-webkit-scrollbar-thumb {
+    background-color: #a7b3bf;
+    border-radius: 10px;
+}
+
 .entry-buttons {
     display: flex;
     justify-content: flex-end;
@@ -592,6 +612,16 @@
     transition: border-color 0.2s, background-color 0.2s;
     height: 130px;
     overflow-y: auto;
+}
+
+.markdown-content::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+}
+
+.markdown-content::-webkit-scrollbar-thumb {
+    background-color: #a7b3bf;
+    border-radius: 10px;
 }
 
 /* Success CSS */
@@ -894,6 +924,21 @@
 .entries-selected-date-entry-div {
     padding: 0 20px;
     width: 60%;
+    height: 64vh;
+}
+
+.all-entry-list{
+    padding-right: 2px;
+}
+
+.all-entry-list::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+}
+
+.all-entry-list::-webkit-scrollbar-thumb {
+    background-color: #323e49;
+    border-radius: 10px;
 }
 
 .calendar-entry-not-found {

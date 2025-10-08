@@ -3,6 +3,7 @@ import AddEntry from "./AddEntry";
 import Feature from "./Feature";
 import PastEntries from "./PastEntries";
 import SuccessEntry from "./SuccessEntry";
+import Content from "./Content";
 
 function calculateStreak(entries) {
     if (entries.length === 0) return 0;
@@ -47,6 +48,7 @@ function countEntriesThisMonth(entries) {
 
 export default function Home() {
     const [addButtonOpen, setAddButtonOpen] = useState(false);
+    const [contentBox, setContentBox] = useState(false);
     const [entries, setEntries] = useState(() => {
         try {
             const saved = localStorage.getItem("journalEntries");
@@ -59,6 +61,8 @@ export default function Home() {
     const [editingIndex, setEditingIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
     const [successShow, setSuccessShow] = useState(false);
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
 
     useEffect(() => {
         localStorage.setItem("journalEntries", JSON.stringify(entries));
@@ -127,6 +131,8 @@ export default function Home() {
                     handleCloseForm={handleCloseForm}
                     setSuccessShow={setSuccessShow}
                 />
+            ) : contentBox ? (
+                <Content setContentBox={setContentBox} title={title} content={content}/>
             ) : (
                 <>
                     <div className="main-div">
@@ -162,6 +168,9 @@ export default function Home() {
                             entries={visibleEntries}
                             handleEntryDelete={handleEntryDelete}
                             handleEntryEdit={handleEntryEdit}
+                            setContentBox={setContentBox}
+                            setTitle={setTitle}
+                            setContent={setContent}
                         />
                     </div>
                     {successShow && (
