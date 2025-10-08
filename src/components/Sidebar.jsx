@@ -6,13 +6,13 @@ function Sidebar() {
             <ul>
                 <NavLink to="/">
                     <div className="sidebar-icons-div">
-                        <span class="material-symbols-outlined">home</span>
+                        <span className="material-symbols-outlined">home</span>
                         <li>Home</li>
                     </div>
                 </NavLink>
                 <NavLink to="/calendar">
                     <div className="sidebar-icons-div">
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             calendar_add_on
                         </span>
                         <li>Calendar</li>
@@ -21,7 +21,7 @@ function Sidebar() {
 
                 <NavLink to="/Entries">
                     <div className="sidebar-icons-div">
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             event_list
                         </span>
                         <li>Entries</li>
@@ -29,7 +29,7 @@ function Sidebar() {
                 </NavLink>
                 <NavLink to="/about">
                     <div className="sidebar-icons-div">
-                        <span class="material-symbols-outlined">info</span>
+                        <span className="material-symbols-outlined">info</span>
                         <li>About</li>
                     </div>
                 </NavLink>

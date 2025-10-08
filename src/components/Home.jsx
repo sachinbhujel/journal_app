@@ -141,13 +141,19 @@ export default function Home() {
                         <span className="material-symbols-outlined">add</span>
                         <button>Add Entry</button>
                     </div>
-                    <div className="entries-detail-div">
-                        <Feature
-                            title="Total Entries"
-                            number={entries.length}
-                        />
-                        <Feature title="This Month" number={entriesThisMonth} />
-                        <Feature title="Streak" number={streak} />
+                    <div className="stats-div">
+                        <h2>Stats</h2>
+                        <div className="entries-detail-div">
+                            <Feature
+                                title="Total Entries"
+                                number={entries.length}
+                            />
+                            <Feature
+                                title="This Month"
+                                number={entriesThisMonth}
+                            />
+                            <Feature title="Streak" number={streak} />
+                        </div>
                     </div>
                     <div className="past-entries">
                         <h2>Past Entries</h2>
