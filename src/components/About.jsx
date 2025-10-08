@@ -5,7 +5,7 @@ export default function About() {
     return (
         <div className="about-container">
             <h1>About Us</h1>
-            <p>
+            <p className="description">
                 Welcome to our platform! We are passionate about building
                 intuitive and accessible web solutions for users across all
                 devices. Our team values creativity, performance, and
